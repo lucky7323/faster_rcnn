@@ -64,7 +64,8 @@ for j = 1:2 % we warm up 2 times
 end
 
 %% -------------------- TESTING --------------------
-im_names = {'001763.jpg', '004545.jpg', '000542.jpg', '000456.jpg', '001150.jpg'};
+%im_names = {'001763.jpg', '004545.jpg', '000542.jpg', '000456.jpg', '001150.jpg'};
+im_names = {'busperson01.jpg'};%, 'Bus13.JPEG'};%, '0003.jpg', '0004.jpg', '0005.jpg', '0006.jpg'};
 % these images can be downloaded with fetch_faster_rcnn_final_model.m
 
 running_time = [];
@@ -114,6 +115,7 @@ for j = 1:length(im_names)
     figure(j);
     showboxes(im, boxes_cell, classes, 'voc');
     pause(0.1);
+    save boxes_cell;
 end
 fprintf('mean time: %.3fs\n', mean(running_time));
 
