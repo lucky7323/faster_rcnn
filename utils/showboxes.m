@@ -3,8 +3,6 @@ function showboxes(im, boxes, legends, color_conf)
 %   showboxes(im, boxes)
 %
 % -------------------------------------------------------
-a=zeros(100,4);
-
 fix_width = 800;
 if isa(im, 'gpuArray')
     im = gather(im);
@@ -47,7 +45,7 @@ if valid_boxes_num > 0
     end
             
 
-    a = zeros(1,4);
+    a = zeros(1,5);
     for i = 1:length(boxes)
         if isempty(boxes{i})
             continue;
@@ -67,7 +65,7 @@ if valid_boxes_num > 0
                 label = sprintf('%s(%d)', legends{i}, i);
                 text(double(box(1))+2, double(box(2)), label, 'BackgroundColor', 'w');
             end
-            b(j,:)=RectLTRB2LTWH(box);
+            b(j,:)=[RectLTRB2LTWH(box) i];
         end
         a = [a; b];
     end
