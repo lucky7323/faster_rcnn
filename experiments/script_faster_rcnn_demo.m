@@ -1,5 +1,5 @@
-function script_faster_rcnn_demo()
-close all;
+function [targetDet] = script_faster_rcnn_demo(img,restart)
+%close all;
 clc;
 clear mex;
 clear is_valid_handle; % to clear init_key
@@ -8,7 +8,10 @@ run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'startup'));
 opts.caffe_version          = 'caffe_faster_rcnn';
 opts.gpu_id                 = auto_select_gpu;
 %opts.gpu_id                 = 1;
+if restart==1
 active_caffe_mex(opts.gpu_id, opts.caffe_version);
+end
+restart=0;
 
 opts.per_nms_topN           = 6000;
 opts.nms_overlap_thres      = 0.7;
@@ -18,7 +21,8 @@ opts.use_gpu                = true;
 opts.test_scales            = 600;
 
 %% -------------------- INIT_MODEL --------------------
-model_dir                   = fullfile(pwd, 'output', 'faster_rcnn_final', 'faster_rcnn_VOC0712_vgg_16layers'); %% VGG-16
+model_dir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/output/faster_rcnn_final/faster_rcnn_VOC0712_ZF';
+%model_dir                   = fullfile(pwd, 'output', 'faster_rcnn_final', 'faster_rcnn_VOC0712_vgg_16layers'); %% VGG-16
 %model_dir                   = fullfile(pwd, 'output', 'faster_rcnn_final', 'faster_rcnn_VOC0712_ZF'); %% ZF
 proposal_detection_model    = load_proposal_detection_model(model_dir);
 
@@ -66,14 +70,15 @@ end
 
 %% -------------------- TESTING --------------------
 %im_names = {'001763.jpg', '004545.jpg', '000542.jpg', '000456.jpg', '001150.jpg'};
-im_names = {'busperson01.jpg'};%, 'Bus13.JPEG'};%, '0003.jpg', '0004.jpg', '0005.jpg', '0006.jpg'};
+%im_names = {'busperson01.jpg'};%, 'Bus13.JPEG'};%, '0003.jpg', '0004.jpg', '0005.jpg', '0006.jpg'};
 % these images can be downloaded with fetch_faster_rcnn_final_model.m
 
 running_time = [];
-for j = 1:length(im_names)
+%for j = 1:1
     
-    im = imread(fullfile(pwd, im_names{j}));
-    
+    %im = imread(fullfile(pwd, im_names{j}));
+    im = imread(img);
+    %im = img;
     if opts.use_gpu
         im = gpuArray(im);
     end
@@ -98,7 +103,7 @@ for j = 1:length(im_names)
     end
     t_detection = toc(th);
     
-    fprintf('%s (%dx%d): time %.3fs (resize+conv+proposal: %.3fs, nms+regionwise: %.3fs)\n', im_names{j}, ...
+    fprintf('(%dx%d): time %.3fs (resize+conv+proposal: %.3fs, nms+regionwise: %.3fs)\n', ...
         size(im, 2), size(im, 1), t_proposal + t_nms + t_detection, t_proposal, t_nms+t_detection);
     running_time(end+1) = t_proposal + t_nms + t_detection;
     
@@ -113,11 +118,10 @@ for j = 1:length(im_names)
         I = boxes_cell{i}(:, 5) >= thres;
         boxes_cell{i} = boxes_cell{i}(I, :);
     end
-    figure(j);
-    showboxes(im, boxes_cell, classes, 'voc');
+    targetDet = showboxes(im, boxes_cell, classes, 'voc');
     pause(0.1);
     save boxes_cell;
-end
+%end
 fprintf('mean time: %.3fs\n', mean(running_time));
 
 caffe.reset_all(); 

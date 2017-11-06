@@ -1,4 +1,4 @@
-function showboxes(im, boxes, legends, color_conf)
+function a = showboxes(im, boxes, legends, color_conf)
 % Draw bounding boxes on top of an image.
 %   showboxes(im, boxes)
 %
@@ -71,7 +71,7 @@ if valid_boxes_num > 0
     end
 end
 a = a(2:end,:);
-save a;
+save showboxes
 end
 
 function [ rectsLTWH ] = RectLTRB2LTWH( rectsLTRB )
