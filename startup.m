@@ -7,7 +7,7 @@ function startup()
 % --------------------------------------------------------
 %   clear mex;
 %   clear is_valid_handle; % to clear init_key
-   
+
    gpuDevice(1);
    
    

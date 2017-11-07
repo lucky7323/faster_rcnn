@@ -1,6 +1,6 @@
 function [targetDet] = script_faster_rcnn_demo(img,opts,model,rpn_net, fast_rcnn_net)
 %close all;
-clc;
+%clc;
 %clear mex;
 %clear is_valid_handle; % to clear init_key
 %run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'startup'));

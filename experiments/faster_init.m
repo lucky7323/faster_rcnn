@@ -18,8 +18,8 @@ opts.use_gpu                = true;
 opts.test_scales            = 600;
 
 %% -------------------- INIT_MODEL --------------------
-model_dir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/output/faster_rcnn_final/faster_rcnn_VOC0712_ZF';
-%model_dir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/output/faster_rcnn_final/faster_rcnn_VOC0712_vgg_16layers';
+%model_dir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/output/faster_rcnn_final/faster_rcnn_VOC0712_ZF';
+model_dir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/output/faster_rcnn_final/faster_rcnn_VOC0712_vgg_16layers';
 proposal_detection_model    = load_proposal_detection_model(model_dir);
 
 proposal_detection_model.conf_proposal.test_scales = opts.test_scales;
