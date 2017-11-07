@@ -5,13 +5,17 @@ function startup()
 % Copyright (c) 2015, Shaoqing Ren
 % Licensed under The MIT License [see LICENSE for details]
 % --------------------------------------------------------
+%   clear mex;
+%   clear is_valid_handle; % to clear init_key
+   
    gpuDevice(1);
+   
    
    addpath(genpath('/home/eunho/vision_project/OD_fromVideo/matconvnet-1.0-beta25/matlab'));
    vl_setupnn;
    fprintf('siamese_cnn startup done\n');
-    
-    
+   
+     
     curdir = fileparts(mfilename('fullpath'));
 %    curdir = '/home/eunho/vision_project/OD_fromVideo/faster_rcnn/';
     addpath(genpath(fullfile(curdir, 'utils')));
