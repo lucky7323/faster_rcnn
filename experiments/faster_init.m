@@ -1,8 +1,8 @@
 function [opts, model, rpn_net, fast_rcnn_net] = faster_init()
 
 clc;
-clear mex;
-clear is_valid_handle; % to clear init_key
+%clear mex;
+%clear is_valid_handle; % to clear init_key
 run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'startup'));
 %% -------------------- CONFIG --------------------
 opts.caffe_version          = 'caffe_faster_rcnn';
