@@ -71,7 +71,6 @@ if valid_boxes_num > 0
     end
 end
 a = a(2:end,:);
-save showboxes
 end
 
 function [ rectsLTWH ] = RectLTRB2LTWH( rectsLTRB )

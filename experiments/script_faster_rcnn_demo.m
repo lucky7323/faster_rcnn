@@ -124,7 +124,6 @@ running_time = [];
     end
     targetDet = showboxes(im, boxes_cell, classes, 'voc');
     pause(0.1);
-    save boxes_cell;
 %end
 fprintf('mean time: %.3fs\n', mean(running_time));
 
