@@ -39,7 +39,7 @@ if valid_boxes_num > 0
             colors(valid_boxes) = colors_candidate(1:sum(valid_boxes));
         case 'voc'
             colors_candidate = colormap('hsv');
-            colors_candidate = colors_candidate(1:(floor(size(colors_candidate, 1)/20)):end, :);
+            colors_candidate = colors_candidate(1:(floor(size(colors_candidate, 1)/30)):end, :);
             colors_candidate = mat2cell(colors_candidate, ones(size(colors_candidate, 1), 1))';
             colors = colors_candidate;
     end

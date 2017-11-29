@@ -24,6 +24,8 @@ function conf = proposal_config(varargin)
     ip.addParamValue('ims_per_batch',   1,              @isscalar);
     % Minibatch size
     ip.addParamValue('batch_size',      256,            @isscalar);
+%    ip.addParamValue('batch_size',      16,            @isscalar);
+
     % Fraction of minibatch that is foreground labeled (class > 0)
     ip.addParamValue('fg_fraction',     0.5,           @isscalar);
     % weight of background samples, when weight of foreground samples is

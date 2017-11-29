@@ -22,6 +22,8 @@ function conf = fast_rcnn_config(varargin)
     ip.addParamValue('ims_per_batch',   2,              @isscalar);
     % Minibatch size
     ip.addParamValue('batch_size',      128,            @isscalar);
+%    ip.addParamValue('batch_size',      16,            @isscalar);
+
     % Fraction of minibatch that is foreground labeled (class > 0)
     ip.addParamValue('fg_fraction',     0.25,           @isscalar);
     % Overlap threshold for a ROI to be considered foreground (if >= fg_thresh)

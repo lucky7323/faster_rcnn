@@ -4,7 +4,9 @@ function dataset = voc2007_trainval(dataset, usage, use_flip)
 % or set opts.imdb_test opts.roidb_train
 
 % change to point to your devkit install
-devkit                      = voc2007_devkit();
+%devkit                      = voc2007_devkit();
+devkit = '/home/eunho/ILSVRCdevkit/';
+%devkit = '/home/eunho/LARGE_DATASET/VOCdevkit/';
 
 switch usage
     case {'train'}
