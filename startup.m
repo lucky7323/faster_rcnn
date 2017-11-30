@@ -11,7 +11,7 @@ function startup()
    gpuDevice(1);
    
    
-   addpath(genpath('/home/eunho/vision_project/OD_fromVideo/matconvnet-1.0-beta20/matlab'));
+   addpath(genpath('/home/eunho/matconvnet-1.0-beta25/matlab'));
    vl_setupnn;
    fprintf('siamese_cnn startup done\n');
    

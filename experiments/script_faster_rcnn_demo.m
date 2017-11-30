@@ -82,7 +82,7 @@ running_time = [];
     
     %im = imread(fullfile(pwd, im_names{j}));
     im = imread(img);
-    %im = img;
+
     if opts.use_gpu
         im = gpuArray(im);
     end
@@ -123,7 +123,6 @@ running_time = [];
         boxes_cell{i} = boxes_cell{i}(I, :);
     end
     targetDet = showboxes(im, boxes_cell, classes, 'voc');
-    pause(0.1);
 %end
 fprintf('mean time: %.3fs\n', mean(running_time));
 
