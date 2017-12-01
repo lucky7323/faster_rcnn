@@ -114,7 +114,7 @@ running_time = [];
     % visualize
     classes = proposal_detection_model.classes;
     boxes_cell = cell(length(classes), 1);
-    thres = 0.78;
+    thres = 0.5;
     for i = 1:length(boxes_cell)
         boxes_cell{i} = [boxes(:, (1+(i-1)*4):(i*4)), scores(:, i)];
         boxes_cell{i} = boxes_cell{i}(nms(boxes_cell{i}, 0.3), :);
