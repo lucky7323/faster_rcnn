@@ -38,10 +38,10 @@ if valid_boxes_num > 0
             colors = cell(size(valid_boxes));
             colors(valid_boxes) = colors_candidate(1:sum(valid_boxes));
         case 'voc'
-            colors_candidate = colormap('hsv');
-            colors_candidate = colors_candidate(1:(floor(size(colors_candidate, 1)/30)):end, :);
-            colors_candidate = mat2cell(colors_candidate, ones(size(colors_candidate, 1), 1))';
-            colors = colors_candidate;
+%v            colors_candidate = colormap('hsv');
+%v            colors_candidate = colors_candidate(1:(floor(size(colors_candidate, 1)/30)):end, :);
+%v            colors_candidate = mat2cell(colors_candidate, ones(size(colors_candidate, 1), 1))';
+%v            colors = colors_candidate;
     end
             
 
@@ -56,14 +56,14 @@ if valid_boxes_num > 0
             if size(boxes{i}, 2) >= 5
                 score = boxes{i}(j, end);
                 linewidth = 2 + min(max(score, 0), 1) * 2;
-                rectangle('Position', RectLTRB2LTWH(box), 'LineWidth', linewidth, 'EdgeColor', colors{i});
+%v                rectangle('Position', RectLTRB2LTWH(box), 'LineWidth', linewidth, 'EdgeColor', colors{i});
                 label = sprintf('%s : %.3f', legends{i}, score);
-                text(double(box(1))+2, double(box(2)), label, 'BackgroundColor', 'w');
+%v                text(double(box(1))+2, double(box(2)), label, 'BackgroundColor', 'w');
             else
                 linewidth = 2;
-                rectangle('Position', RectLTRB2LTWH(box), 'LineWidth', linewidth, 'EdgeColor', colors{i});
+%v                rectangle('Position', RectLTRB2LTWH(box), 'LineWidth', linewidth, 'EdgeColor', colors{i});
                 label = sprintf('%s(%d)', legends{i}, i);
-                text(double(box(1))+2, double(box(2)), label, 'BackgroundColor', 'w');
+%v                text(double(box(1))+2, double(box(2)), label, 'BackgroundColor', 'w');
             end
             b(j,:)=[RectLTRB2LTWH(box) i score];
         end
